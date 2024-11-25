@@ -1,44 +1,86 @@
 package com.example.coinzipp.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private boolean isDealer;
-    private String companyName;
-    private String companyaddress;
-    private String companyCity;
-    private String companyState;
-    private String companyZip;
-    private String companyPhone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public User(String email, String password, String firstName, String lastName, String phoneNumber, boolean isDealer, String companyName, String companyaddress, String companyCity, String companyState, String companyZip, String companyPhone) {
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column(nullable = false)
+    private boolean isDealer;
+
+    private String companyName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.isDealer = isDealer;
+    }
+
+    public boolean isDealer() {
+        return isDealer;
+    }
+
+    public void setDealer(boolean dealer) {
+        isDealer = dealer;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
-        this.companyaddress = companyaddress;
-        this.companyCity = companyCity;
-        this.companyState = companyState;
-        this.companyZip = companyZip;
-        this.companyPhone = companyPhone;
     }
-    public User(String email, String password, String firstName, String lastName, String phoneNumber, boolean isDealer) {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.isDealer = isDealer;
-    }
+
+// Getters and setters
 }

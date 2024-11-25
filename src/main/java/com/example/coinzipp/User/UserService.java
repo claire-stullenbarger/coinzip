@@ -1,28 +1,27 @@
 package com.example.coinzipp.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
 
-    @Cacheable("users")
-    public User getUserById(String id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
-    @CachePut(value = "users", key = "#user.id")
-    public User updateUser(User user) {
+    public User createUser(User user) {
+        // Add any business logic (e.g., password hashing)
         return userRepository.save(user);
     }
 
-    @CacheEvict(value = "users", key = "#id")
-    public void deleteUser(String id) {
-        userRepository.deleteById(id);
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
 }
