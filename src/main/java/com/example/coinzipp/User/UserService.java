@@ -35,5 +35,33 @@ public class UserService {
     }
 
 
+    public User registerNewUser(RegistrationRequest registrationRequest) throws Exception {
+        // Check if email already exists
+        if (userRepository.findByEmail(registrationRequest.getEmail()) != null) {
+            throw new Exception("Email already in use");
+        }
 
+        // Validate password strength
+        validatePassword(registrationRequest.getPassword());
+
+        User user = new User();
+        user.setEmail(registrationRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+        user.setName(registrationRequest.getName());
+        user.setAccountType(registrationRequest.getAccountType());
+
+        return createUser(user);
+    }
+
+    private void validatePassword(String password) throws Exception {
+        if (password.length() < 8) {
+            throw new Exception("Password must be at least 8 characters");
+        }
+        // Add more password strength checks
+    }
+
+    // Add more password strength checks
 }
+
+
+

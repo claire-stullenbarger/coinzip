@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>CoinZip</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>CoinZip</h1>
+    <a class="login" href="login.html">Login</a>
+    <a class="login" href="register.html">Register</a>
     <p>Find Coin Dealers and Shows Near You</p>
-    <a href="login.html">Login</a>
-    <a href="register.php">Register</a>
-    <a href="dashboard.php">Dashboard</a>
-
-
+    <form action="/search" method="get">
+        <div>
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" required>
+        </div>
+        <button type="submit">Search</button>
+    </form>
 </body>
 </html>

@@ -22,4 +22,15 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
-}
+        @PostMapping("/register")
+        public ResponseEntity<?> register(@RequestBody RegistrationRequest registrationRequest) {
+            try {
+                User newUser = userService.registerNewUser(registrationRequest);
+                return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
+            }
+        }
+
+
+    }
