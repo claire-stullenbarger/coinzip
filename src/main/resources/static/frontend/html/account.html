@@ -3,36 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>User Account Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .account-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 30px;
-        }
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .account-details {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 10px;
-        }
-        .label {
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
+<section class="topnav" >
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+    <a class="active" href="account.html">Account</a>
+</section>
 <div class="account-card">
     <div class="profile-header">
         <h1>Account Profile</h1>
@@ -54,7 +33,6 @@
 </div>
 
 <script>
-    // Fetch user data when page loads
     document.addEventListener('DOMContentLoaded', () => {
         fetch('/api/user-profile')
             .then(response => response.json())

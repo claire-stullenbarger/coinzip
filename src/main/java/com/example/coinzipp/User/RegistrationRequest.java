@@ -1,13 +1,19 @@
 package com.example.coinzipp.User;
 
 public class RegistrationRequest {
+    private String name;
     private String email;
     private String password;
-    private String name;
-    public AccountType accountType;
+    private AccountType accountType;
 
+    public String getName() {
+        return name;
+    }
 
-    // Getters and Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -24,14 +30,6 @@ public class RegistrationRequest {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public AccountType getAccountType() {
         return accountType;
     }
@@ -40,6 +38,3 @@ public class RegistrationRequest {
         this.accountType = accountType;
     }
 }
-
-
-

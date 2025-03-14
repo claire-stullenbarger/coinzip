@@ -9,26 +9,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 45)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "type", nullable = false)
     private AccountType accountType;
 
+    // Default constructor
+    protected User() {}
 
-    public Long getId() {
-        return id;
+    // Constructor with fields
+    public User(String email, String password, String name, AccountType accountType) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.accountType = accountType;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    // Getters and setters
+    public Long getId() {
+        return id;
     }
 
     public String getEmail() {
@@ -55,7 +62,6 @@ public class User {
         this.name = name;
     }
 
-
     public AccountType getAccountType() {
         return accountType;
     }
@@ -64,5 +70,13 @@ public class User {
         this.accountType = accountType;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", accountType=" + accountType +
+                '}';
+    }
 }
